@@ -8,17 +8,14 @@
 import Foundation
 
 struct StockQuote: Codable, Identifiable, Equatable, Hashable {
-    let id = UUID() // Always generate locally for Identifiable
+    let id = UUID()
     let symbol: String
     let name: String
     let currency: String
     let exchange: String
     let exchangeFullName: String
 
-    // Explicitly define CodingKeys to exclude 'id' from decoding
-    // All other properties that match JSON keys will be automatically decoded.
     private enum CodingKeys: String, CodingKey {
         case symbol, name, currency, exchange, exchangeFullName
-        // Do NOT list 'id' here, so Codable ignores it during decoding.
     }
 }
